@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Registros</title>
+    <!-- ... -->
 </head>
 <body>
     <h1>Lista de Registros Diarios</h1>
+
+    <!-- Formulario de filtro -->
+    <form method="GET">
+        <label for="fecha_filtro">Filtrar por Fecha:</label>
+        <select name="fecha_filtro" id="fecha_filtro">
+            <option value="">Todas las fechas</option>
+            {% for fecha in fechas %}
+                <option value="{{ fecha|date:'Y-m-d' }}">{{ fecha|date:'Y-m-d' }}</option>
+            {% endfor %}
+        </select>
+        <label for="empleado_filtro">Filtrar por Empleado:</label>
+        <select name="empleado_filtro" id="empleado_filtro">
+            <option value="">Todos los empleados</option>
+            {% for empleado in empleados %}
+                <option value="{{ empleado }}">{{ empleado }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Filtrar</button>
+    </form>
+    
+
     <ul>
         {% for registro in registros %}
             <li>{{ registro.fecha }} - {{ registro.empleado }}</li>
+            <!-- ... (mostrar otros campos) ... -->
             <ul>
                 <li>Tiempo Suficiente: {{ registro.tiempo_suficiente }}</li>
                 <li>Actividades de Interés: {{ registro.actividades_interesantes }}</li>
