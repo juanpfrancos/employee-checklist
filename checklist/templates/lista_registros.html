@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Registros</title>
+</head>
+<body>
+    <h1>Lista de Registros Diarios</h1>
+    <ul>
+        {% for registro in registros %}
+            <li>{{ registro.fecha }} - {{ registro.empleado }}</li>
+            <ul>
+                <li>Tiempo Suficiente: {{ registro.tiempo_suficiente }}</li>
+                <li>Actividades de Interés: {{ registro.actividades_interesantes }}</li>
+                <li>Material Agradable: {{ registro.material_agradable }}</li>
+                <li>Trabajo Fuera del Aula: {{ registro.trabajo_fuera_aula }}</li>
+                <li>Involucrados: {{ registro.involucrados }}</li>
+                <li>Atentos: {{ registro.atentos }}</li>
+                <li>Interrupciones: {{ registro.interrupciones }}</li>
+                <li>Influencias: {{ registro.influencias }}</li>
+                <li>Situación Relevante: {{ registro.situacion_relevante }}</li>
+            </ul>
+        {% empty %}
+            <li>No hay registros disponibles.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
